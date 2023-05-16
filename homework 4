@@ -1,0 +1,140 @@
+//1. Create a function that takes an array of numbers between 1 and 10 (excluding one number) and returns the missing number.
+// missingNum([1, 2, 3, 4, 6, 7, 8, 9, 10]) ➞ 5
+// missingNum([7, 2, 3, 6, 5, 9, 1, 4, 8]) ➞ 10
+// missingNum([10, 5, 1, 2, 4, 6, 8, 3, 9]) ➞ 7
+
+/* function missingNum(arr){
+
+let missing = []
+
+for (let i = 1;i<=arr.length; i++) {
+  if (arr.indexOf(i) == -1) {
+    missing.push(i);
+  }
+}
+return +missing
+}
+console.log(missingNum([1, 2, 3, 4,5, 6,7, 9, 10]))  */
+
+
+
+
+// 2. Create a function that returns the frequency distribution of an array. This function should return an object, where the keys are the unique elements and the values are the frequency in which those elements occur.
+// getFrequencies(["A", "B", "A", "A", "A"]) ➞ { A: 4, B: 1 }
+// getFrequencies([1, 2, 3, 3, 2]) ➞ { "1": 1, "2": 2, "3": 2 }
+// getFrequencies([true, false, true, false, false]) ➞ { true: 2, false: 3 }
+// getFrequencies([]) ➞ {}
+
+//1
+
+
+/* function getFrequencies(arr){
+return arr.reduce((aggr,val)=>{
+  aggr[val]!==undefined ? aggr[val]+=1 : aggr[val]=1 
+  return aggr 
+
+},{})
+
+}
+
+console.log(getFrequencies(["A","B", "A", "A", "A"]))  */
+
+
+//2
+
+/* function getFrequencies(arr) {
+
+  let obj = {}; 
+
+  for (let i=0; i<arr.length; i++){
+    let element = arr[i]; 
+    if (obj[element] !== undefined){
+      obj[element] += 1;
+    }
+    else {
+      obj[element] = 1; 
+    }
+  }
+  return obj
+}
+
+console.log(getFrequencies(["A", "B", "A", "A", "A"]));  */
+
+// 3. countNumberOfOccurrences({
+//   a: "moron",
+//   b: "scumbag",
+//   c: "moron",
+//   d: "idiot",
+//   e: "idiot"
+// }) ➞ { moron: 2, scumbag: 1, idiot: 2 }
+
+
+// countNumberOfOccurrences({
+//   a: "moron",
+//   b: "moron",
+//   c:"moron"
+// }) ➞ { moron: 3 }
+
+
+/* 
+function countNumberOfOccurrences(obj) {
+  const result = {};
+  for (const key in obj) {
+    if (result.hasOwnProperty(obj[key])) {
+      result[obj[key]]++;
+    } else {
+      result[obj[key]] = 1;
+    }
+  }
+  return result;
+}
+
+console.log(countNumberOfOccurrences({
+  a: "moron",
+  b: "scumbag",
+   c: "moron",
+   d: "idiot",
+  e: "idiot"
+ }))  */
+
+// 4. Create a function which takes in an encoded string and returns an object according to the following example:
+// parseCode("John000Doe000123") ➞ {
+//   firstName: "John",
+//   lastName: "Doe",
+//   id: "123"
+// }
+
+// parseCode("michael0smith004331") ➞ {
+//   firstName: "michael",
+//   lastName: "smith",
+//   id: "4331"
+// }
+
+//1
+/* 
+  function parseCode(str) {
+  const [firstName, lastName, id] = str.split('000');
+  return {
+    firstName,
+    lastName,
+    id
+  };
+ }
+ 
+ console.log(parseCode("John000Doe000123"))  */
+ 
+
+//2
+ /* function parseCode(str) {
+  const parts = str.match(/^([a-z]+)(\d*)([a-z]+)(\d+)$/i);
+  if (!parts) {
+    throw new Error('Invalid input');
+  }
+  const [ firstName, lastName, id] = parts;
+  return {
+    firstName: firstName.toLowerCase(),
+    lastName: lastName.toLowerCase(),
+    id,
+  };
+ }
+ console.log(parseCode("michael0smith00433")) */
