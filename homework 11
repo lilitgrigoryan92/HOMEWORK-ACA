@@ -1,0 +1,185 @@
+//TASK1
+
+// Write a function that accepts two promises as arguments and returns a new promise
+// that resolves with the sum of their values. For example, if you call the function with
+// promises that resolve to 3 and 5, respectively, the new promise should resolve to 8.
+
+// Գրել ֆունկցիա, որն ընդունում է երկու խոստում որպես արգումենտ և վերադարձնում նոր խոստում
+// որը լուծում է դրանց արժեքների գումարով: Օրինակ, եթե դուք զանգահարեք գործառույթը
+// խոստումներ, որոնք լուծում են համապատասխանաբար 3-ին և 5-ին, նոր խոստումը պետք է որոշի մինչև 8-ը:
+
+/* 
+ function sumPromises(promise1, promise2) {
+  return Promise.all([promise1, promise2])
+    .then(values => {
+      const sum = values.reduce((acc, current) => acc + current);
+      return Promise.resolve(sum);
+    })
+    .catch(error => {
+      return Promise.reject(error);
+    });
+}
+const promise1 = Promise.resolve(3);
+const promise2 = Promise.resolve(5);
+
+sumPromises(promise1, promise2)
+  .then(result => {
+    console.log(result); // Output: 8
+  })
+  .catch(error => {
+    console.error(error);
+  });  
+ */
+
+
+
+//TASK2
+
+// Implement a function that accepts an array of promises and returns a new promise that
+// resolves with an array of their resolved values. For example, if you call the function
+// with an array containing promises that resolve to 3, 5, and 7, respectively, the new promise
+// should resolve to an array containing the values 3, 5, and 7.
+
+// Իրականացնել գործառույթ, որն ընդունում է խոստումների զանգված և վերադարձնում է նոր խոստում, որը
+// լուծում է իրենց լուծված արժեքների զանգվածով: Օրինակ, եթե դուք զանգահարեք գործառույթը
+// մի զանգվածով, որը պարունակում է խոստումներ, որոնք լուծում են համապատասխանաբար 3, 5 և 7, նոր խոստումը
+// պետք է լուծվի դեպի զանգված, որը պարունակում է 3, 5 և 7 արժեքները:
+
+
+ 
+
+//SOLUTION 1
+
+
+/*   function ArrayOfPromise(promises) {
+  return Promise.all([promise1, promise2,promise3])
+  let arr=[]
+    .then(values => {
+      const arr1 = values.forEach((val) => arr.push(val));
+      return Promise.resolve(arr1);
+    })
+    .catch(error => {
+      return Promise.reject(error);
+    });
+  }
+  const promise1 = Promise.resolve(3);
+  const promise2 = Promise.resolve(5);
+  const promise3 = Promise.resolve(7);
+  
+   
+  const promises = [Promise.resolve(3), Promise.resolve(5), Promise.resolve(7)]; 
+  
+  ArrayOfPromise(promises)
+  .then(result => {
+    console.log(result); 
+  })
+  .catch(error => {
+    console.error(error);
+  });  */
+  
+  
+  
+  
+  //SOLUTION2
+  
+/*  function promiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    let resolvedCount = 0;
+    
+    promises.forEach((promise, index) => {
+      promise.then(result => {
+        results[index] = result;
+        resolvedCount++;
+        if (resolvedCount === promises.length) {
+          resolve(results);
+        }
+      }).catch(error => {
+        reject(error);
+      });
+    });
+  });
+ }
+ const promises = [Promise.resolve(3), Promise.resolve(5), Promise.resolve(7)];
+ promiseAll(promises).then(results => {
+  console.log(results); // [3, 5, 7]
+ });  */
+
+
+//SOLUTION 3
+
+/*  function sumPromises(promise1, promise2) {
+  return Promise.all([promise1, promise2])
+   
+     
+    
+    .catch(error => {
+      return Promise.reject(error);
+    });
+ }
+ const promise1 = Promise.resolve(3);
+ const promise2 = Promise.resolve(5);
+ 
+ sumPromises(promise1, promise2)
+  .then(result => {
+    console.log(result); // Output: 8
+  })
+  .catch(error => {
+    console.error(error);
+  });  
+ */
+ 
+
+////TASK3
+
+// Write a function that accepts a number and returns a promise that resolves after that
+// number of seconds has elapsed. For example, if you call the function with 5, the promise
+// should resolve after 5 seconds.
+
+
+// Գրել ֆունկցիա, որն ընդունում է թիվ և վերադարձնում խոստում, որը լուծում է դրանից հետո
+// վայրկյանների քանակը անցել է: Օրինակ, եթե ֆունկցիան կանչեք 5-ով, խոստումը
+// պետք է լուծվի 5 վայրկյան հետո:
+
+
+/*   function timer(seconds) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, seconds * 1000);
+  });
+   }
+   
+   timer(5).then(() => {
+  console.log('print after 5 second');
+   });   */
+
+//TASK4
+
+// Implement a function that accepts an array of functions that return promises, and returns
+//  a new function that returns a promise that resolves with an array of their resolved values.
+//   For example, if you call the function with an array containing two functions that return
+//   promises that resolve to 3 and 5, respectively, the new function should return a promise
+//   that resolves to an array containing the values 3 and 5.
+
+// Իրականացնել ֆունկցիա, որն ընդունում է գործառույթների զանգված, որոնք վերադարձնում են խոստումներ և վերադարձնում
+// նոր ֆունկցիա, որը վերադարձնում է խոստում, որը լուծում է դրանց լուծված արժեքների զանգվածով:
+// Օրինակ, եթե ֆունկցիան կանչում եք երկու ֆունկցիա պարունակող զանգվածով, որոնք վերադարձնում են
+// խոստումներ, որոնք լուծում են համապատասխանաբար 3 և 5, նոր գործառույթը պետք է վերադարձնի խոստում
+// որը լուծում է 3 և 5 արժեքները պարունակող զանգված:
+
+
+/*   function promiseAll(promises) {
+  return function() {
+    const promiseArray = promises.map(promise => promise());
+    return Promise.all(promiseArray);
+  }
+   }
+   
+   const promises = [
+  () => Promise.resolve(3),
+  () => Promise.resolve(5)
+   ];
+   
+   const newPromise = promiseAll(promises);
+   newPromise().then(result => console.log(result));   
+  */
+ 
