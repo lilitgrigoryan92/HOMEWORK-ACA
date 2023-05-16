@@ -1,0 +1,264 @@
+/* 1. Write a function that returns an anonymous function, which adds n to its input
+1. adds1 = addsNum(1)
+adds1(3) ➞ 4
+adds1(5.7) ➞ 6.7 
+2. adds10 = addsNum(10)
+adds10(44) ➞ 54
+adds10(20) ➞ 30*/
+
+//1
+
+/* function addsNum(n) {
+  return function(x) {
+    return n + x;
+  };
+}
+const adds1 = addsNum(1);
+console.log(adds1(3)); 
+console.log(adds1(5.7)); 
+
+const adds10 = addsNum(10);
+console.log(adds10(44)); 
+console.log(adds10(20)); */
+
+
+
+/*2 Write a function that returns an anonymous function, which transforms its input by adding a particular suffix at the end.
+add_ly = add_suffix("ly")
+
+add_ly("hopeless") ➞ "hopelessly"
+add_ly("total") ➞ "totally"
+
+add_less = add_suffix("less")
+
+add_less("fear") ➞ "fearless"
+add_less("ruth") ➞ "ruthless" */
+
+/* function add_suffix(suffix) {
+  return function(word) {
+    return word + suffix;
+  }
+}
+const add_ly = add_suffix("ly");
+console.log(add_ly("hopeless")); // "hopelessly"
+console.log(add_ly("total")); // "totally" */
+
+
+
+
+/* 3 Create a function which takes an array arr of integers as an argument. This function must return another function, which takes a single integer as an argument and returns a new array.
+
+The returned array should consist of each of the elements from the first array multiplied by the integer.
+
+Examples
+multiply([1, 2, 3])(2) ➞ [2, 4, 6]
+
+multiply([4, 6, 5])(10) ➞ [40, 60, 50]
+
+multiply([1, 2, 3])(0) ➞ [0, 0, 0] */
+
+
+//1
+/* function multiply(arr){
+return num=> arr.map((el)=> el*num)}
+console.log(multiply([1, 2, 3])(2)) */
+
+//2
+/* 
+function multiply(arr) {
+  return function(input) {
+    return arr.map(function(num) {
+      return num * input;
+    });
+  };
+}
+const arr = [1, 2, 3];
+const multiplyBy2 = multiply(arr);
+const result = multiplyBy2(2);
+console.log(result);  */
+
+
+
+/* 4 Create a function that groups an array of numbers based on a size parameter. The size represents the maximum length of each sub-array.
+group([1, 2, 3, 4], 2) ➞ [[1, 2], [3, 4]]
+group([1, 2, 3, 4, 5, 6, 7], 4) ➞ [[1, 2, 3, 4], [5, 6, 7]]
+group([1, 2, 3, 4, 5], 1) ➞ [[1], [2], [3], [4], [5]] */
+
+
+/* 
+function group(arr, size) {
+  let result = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+
+}
+
+console.log(group([1, 2, 3, 4], 2)) */
+
+/* 5.Create a function that takes three collections of arguments and returns the sum of the product of numbers. Add the result of the first digit in each collection multiplied together to the result of the second digit in each collection multiplied together to get the final solution.
+
+product(1,2)(1,1)(2,3) ➞ 8
+// 1 * 1 * 2 + 2 * 1 * 3
+
+product(10,2)(5,0)(2,3) ➞ 100
+// 10 * 5 * 2 + 2 * 0 * 3
+
+product(1,2)(2,3)(3,4) ➞ 30
+// 1 * 2 * 3 + 2 * 3 * 4 */
+
+
+//1
+/* function product(a,b){
+return function (c,d){
+return function(e,f){
+return a*c*e+b*d*f
+}
+}
+}
+console.log(product(1,2)(2,3)(3,4))  */
+
+//2
+/* function product(a,b){return (c,d)=>(e,f)=> a*c*e+b*d*f}
+console.log(product(1,2)(2,3)(3,4)) */
+
+//3
+
+/* function product(...args1) {
+  return function(...args2) {
+    return function(...args3) {
+      const sum1 = args1[0] * args2[0] * args3[0];
+      const sum2 = args1[1] * args2[1] * args3[1];
+      return sum1 + sum2
+    }
+  }
+}
+console.log(product(1,2)(2,3)(3,4)) */
+
+
+/* 6.Given an input string, reverse the string word by word, the first word will be the last, and so on.
+
+reverseWords(" the sky is blue") ➞ "blue is sky the"
+reverseWords("hello   world!  ") ➞ "world! hello"
+reverseWords("a good example") ➞ "example good a" */
+
+/* 
+ function revereseWords(str){
+ return str.split(" ").reverse().join(" ")
+}
+console.log(revereseWords(" the sky is blue")) */
+
+/* 
+7.mostExpensiveItem({
+  piano: 2000,
+}) ➞ "piano"
+
+mostExpensiveItem({
+  tv: 30,
+  skate: 20,
+}) ➞ "tv"
+
+mostExpensiveItem({
+  tv: 30,
+  skate: 20,
+  stereo: 50,
+}) ➞ "stereo" */
+
+/* 
+function mostExpensiveItem(items) {
+  let mostExpensive
+  let highestPrice = 0;
+
+  for (const [key, value] of Object.entries(items)) {
+    if (value > highestPrice) {
+      highestPrice = value;
+      mostExpensive = key;
+    }
+  }
+
+  return mostExpensive;
+}
+
+console.log(mostExpensiveItem({
+  tv: 30,
+  skate: 20,
+  stereo: 50,
+}))
+ */
+
+
+/* 8. Write a function that takes a string and calculates the number of letters and digits within it. Return the result as an object.
+ countAll("Hello World") ➞ { "LETTERS":  10, "DIGITS": 0 }
+ 
+ countAll("H3ll0 Wor1d") ➞ { "LETTERS":  7, "DIGITS": 3 }
+ 
+ countAll("149990") ➞ { "LETTERS": 0, "DIGITS": 6 } */
+
+/* function countAll(str) {
+  let letters = 0;
+  let digits = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str.charAt(i);
+
+    if (char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z') {
+      letters++;
+    } else if (char >= '0' && char <= '9') {
+      digits++;
+    }
+  }
+
+  return {
+    "LETTERS": letters,
+    "DIGITS": digits
+  };
+}
+console.log(countAll("1515fsf55")) */
+
+
+
+//1
+/* const kyle = new CreateAuthor("Kyle", "Simpson", "You don't know js yet"); =>
+
+{
+  name: "Kyle";
+  surname: "Simpson";
+  book: "You don't know js yet";
+} */
+
+ 
+/* function CreateAuthor(name, surname, book) {
+  this.name = name;
+  this.surname = surname;
+  this.book = book;
+}
+
+const kyle = new CreateAuthor("Kyle", "Simpson", "You don't know js yet");
+
+console.log(kyle); */
+
+
+
+//2
+/* const john = new CreateAuthor("John", "Doe", "Perfect book");
+
+{
+  name: "John";
+  surname: "Doe";
+  book: "Perfect book";
+} */
+/* 
+function CreateAuthor(name, surname, book) {
+  this.name = name;
+  this.surname = surname;
+  this.book = book;
+
+}
+
+const john = new CreateAuthor("John", "Doe", "Perfect book");
+
+
+console.log(john) */
+
+
