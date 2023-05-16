@@ -1,0 +1,628 @@
+/* Task 1
+Given an array of integers. Write a program which calculates the sum of odd numbers.
+If there are no odd numbers in the array the answer is 0. */
+
+/*  function calc(arr) {
+ return  arr.filter((el) =>
+    el % 2 !== 0).reduce((aggr, val) => {
+    return aggr + val
+  }, 0)
+ }
+ console.log(calc([2, 4, 6, 5, 7])) */
+
+
+
+/*  
+Task 2
+Given an array of integers. Write a program to find the minimum and maximum elements in
+the array and swap them.
+*/
+
+
+
+/* 
+function swap(arr) {
+
+  const i1 = arr.indexOf(Math.min(...arr));
+  const i2 = arr.indexOf(Math.max(...arr))
+  let temp = arr[i1];
+  arr[i1] = arr[i2];
+
+  arr[i2] = temp;
+  return arr
+}
+
+console.log(swap([0, 2, 4, 6, 8, 10]));  */
+
+
+/* function swapMinMax(arr) {
+  let max = Math.max(...arr);
+  let min = Math.min(...arr);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === max) {
+      arr[i] = min;
+    } else if (arr[i] === min) {
+      arr[i] = max;
+    }
+  }
+  return arr;
+}
+console.log(swapMinMax([11, 23, 4, 5, 1]));  */ // 23, 11
+
+
+
+/* function toSwapMinMax(arr) {
+  let min = arr[arr.indexOf(Math.min(...arr))];
+  arr[arr.indexOf(Math.min(...arr))] = arr[arr.indexOf(Math.max(...arr))];
+  arr[arr.indexOf(Math.max(...arr))] = min;
+  return arr;
+}
+console.log(toSwapMinMax([11, 23, 4, 5, 1])); */
+
+
+
+
+
+/* 
+Task 3
+Create a function that takes two arguments. Both arguments are integers, a and b.
+Return true if their sum is 10, and return false in other cases. */
+
+/*  function sumMakesTen(a,b) {
+ return a+b===10
+ }
+ 
+ console.log(sumMakesTen(1,8))  */
+
+
+/* Task 4
+Create a function that takes an argument sizes of the box (width, length, height) and
+returns the volume of the box. */
+
+
+/* function getBoxVolume(width,length,heigth){ 
+return width*length*heigth
+}
+console.log(getBoxVolume(1,2,13)) */
+
+
+/* Task 5
+Create a function that takes two numbers as arguments (num, length) and returns
+an array of multiples of num until the array length reaches length. If the first
+parameter is equal to 0 return [0]. */
+
+/* 
+function arrayOfMultiples(num, length) {
+  const arr = []
+  if (num === 0) {
+    arr.push(num)
+  }
+  for (let i = 1; i <= length; i++) {
+    if (num !== 0) {
+      arr.push(num * i)
+    }
+  }
+  return arr
+
+}
+console.log(arrayOfMultiples(7,3)) //[7, 14, 21] */
+
+
+/* Task 6 ?
+You are given an array of strings words and a string pref. Return the number of strings in
+words that start with the defined prefix.
+Note:
+A prefix of a string s is any leading contiguous substring of s. */
+
+/* function calcCount(arr,prefix) {
+  let count = 0
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].startsWith(prefix)) {
+
+      count++
+    }
+
+  }
+  return count
+
+}
+console.log(calcCount(["attention", "please", "atattend"],"att")) 
+ */
+
+/*  Task 7
+ Create a function which takes two strings (p1 and p2 — which represent player 1 and 2) as
+ arguments and returns a string stating the winner in a game of Rock, Paper, Scissors.
+ Each argument will contain a single string: "Rock", "Paper", or "Scissors". Return the
+ winner according to the following rules: */
+
+//1
+
+
+/* function rps(p1, p2) {
+  if ((p1 === "Paper" && p2 === "Paper") || (p1 === "Rock" && p2 === "Rock") || (p1 === "Scissors" && p2 === "Scissors")) {
+
+    return "It's a draw"
+  }
+
+  if ((p1 === "Scissors" && p2 === "Paper") || (p1 === "Paper" && p2 === "Rock") || (p1 === "Rock" && p2 === "Scissors")) {
+
+    return "The winner is p1"
+  }
+
+  if ((p1 === "Paper" && p2 === "Scissors") || (p1 === "Rock" && p2 === "Paper") || (p1 === "Scissors" && p2 === "Rock")) {
+
+    return "The winner is p2"
+  } else {
+    return "Invalid input, enter correct value."
+  }
+}
+
+console.log(rps("Paper", "Paper"))
+ */
+
+
+//2
+
+/* function input(first, second) {
+   const Rock = 'Rock'
+   const Paper = 'Paper'
+   const Scissors = 'Scissors'
+   const items = new Set([Rock,Paper,Scissors])
+   const winner = {
+     RockScissors: true,
+     PaperRock: true,
+     ScissorsPaper: true
+   }
+   if (!items.has(first) || !items.has(second)) {
+     return 'Invalid input, enter correct value.'
+   }
+   if (first === second) {
+     return 'Draw! Enter new values.'
+   }
+   const combination = first + second
+
+   if (winner[combination]) {
+      return '1st player wins!'
+   }
+   
+   return '2nd player wins'
+
+ }
+ console.log(input('Rock', 'Scissors'))
+*/
+
+
+
+/*  Objects
+ For the given list of payments do the following exercises:
+ Տրված վճարումնեի ցուցակի համար կատարել հետևյալ վարժություննորը։ */
+
+
+
+//1. Find the max payment
+//Գտնել մեծագույն կատարված վճարումը
+
+
+/* 
+const payments = [
+{
+studentId: 1, // Unique identifier for each student
+studentName: "John Doe", // Name of the student
+payedAmount: 1600, // Amount payed with this transaction
+year: 2020, // The payment year
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1500,
+year: 2021
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1400,
+year: 2022
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1300,
+year: 2023
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1500,
+year: 2020
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1400,
+year: 2021
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1300,
+year: 2023
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1200,
+year: 2023
+}
+];
+ */
+//1
+/*
+function findMaxPayment(payments) {
+  let result = payments[0].payedAmount;
+  payments.forEach((el) => {
+    if (result < el.payedAmount) {
+      result = el.payedAmount;
+    }
+  });
+  return result;
+}
+
+console.log(findMaxPayment(payments));
+*/
+
+//2
+
+/* 
+function findMaxPayment2(payments) {
+  return payments.reduce((acc, el) => {
+    return Math.max(acc, el.payedAmount);
+  },1600);
+}
+
+console.log(findMaxPayment2(payments));
+ */
+
+//3
+/*
+const findMaxPayment3 = (pay) =>
+  pay.reduce(
+    (acc, item) => (acc > item["payedAmount"] ? acc : item["payedAmount"]),
+    pay[0]["payedAmount"]
+  );
+console.log(findMaxPayment3(payments))
+*/
+
+/*
+//4
+let filteredAmount=payments.map(function(person){
+return person.payedAmount
+})
+
+filteredAmount= Math.max(...filteredAmount)
+
+console.log(filteredAmount) */
+
+
+//2. Calculate the sum of all payments
+//Հաշվել վճարումների ամբողջ գումարը
+/*
+ const payments = [
+{
+studentId: 1, // Unique identifier for each student
+studentName: "John Doe", // Name of the student
+payedAmount: 1600, // Amount payed with this transaction
+year: 2020, // The payment year
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1500,
+year: 2021
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1400,
+year: 2022
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1300,
+year: 2023
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1500,
+year: 2020
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1400,
+year: 2021
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1300,
+year: 2023
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1200,
+year: 2023
+}
+];
+//1
+
+function studentsPayedAmount(payments) {
+  return payments.reduce((acc, el) => acc + el.payedAmount, 0);
+}
+
+console.log(studentsPayedAmount(payments));*/
+
+
+
+/*
+//2
+let filteredAmount=payments.map(function(person){
+return person.payedAmount
+}).reduce((aggr,val)=>{
+return aggr+val
+})
+
+console.log(filteredAmount) 
+*/
+
+//3. Find the count of all payments that are more than 1500
+//Գտնել բոլոր այն վճարումների քանակը, որոնք ավելին են 1500-ից
+
+
+/* const payments = [
+{
+studentId: 1, // Unique identifier for each student
+studentName: "John Doe", // Name of the student
+payedAmount: 1600, // Amount payed with this transaction
+year: 2020, // The payment year
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1500,
+year: 2021
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1400,
+year: 2022
+},
+{
+studentId: 1, // Unique for each student
+studentName: "John Doe",
+payedAmount: 1300,
+year: 2023
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1500,
+year: 2020
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1400,
+year: 2021
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1300,
+year: 2023
+},
+{
+studentId: 2, // Unique for each student
+studentName: "Lu Kang",
+payedAmount: 1200,
+year: 2023
+}
+];
+
+function findMoreThan1500(payments) {
+  return payments.reduce(
+    (acc, el) => (el.payedAmount > 1200 ? (acc + el.payedAmount) : acc),
+    
+  );
+}
+console.log(1, findMoreThan1500(payments));
+*/
+
+
+
+/*
+//2
+let filteredAmount=payments.map(function(person){
+return person.payedAmount
+}).filter((el)=>{
+return el>1500
+
+}) 
+console.log(filteredAmount) */
+
+
+
+//4. Calculate the average of all payments
+//Հաշվել բոլոր կատարված վճարուների թվաբանական միջինը
+
+ const payments = [{
+    studentId: 1, // Unique identifier for each student
+    studentName: "John Doe", // Name of the student
+    payedAmount: 1600, // Amount payed with this transaction
+    year: 2020, // The payment year
+  },
+  {
+    studentId: 1, // Unique for each student
+    studentName: "John Doe",
+    payedAmount: 1500,
+    year: 2021
+  },
+  {
+    studentId: 1, // Unique for each student
+    studentName: "John Doe",
+    payedAmount: 1400,
+    year: 2022
+  },
+  {
+    studentId: 1, // Unique for each student
+    studentName: "John Doe",
+    payedAmount: 1300,
+    year: 2023
+  },
+  {
+    studentId: 2, // Unique for each student
+    studentName: "Lu Kang",
+    payedAmount: 1500,
+    year: 2020
+  },
+  {
+    studentId: 2, // Unique for each student
+    studentName: "Lu Kang",
+    payedAmount: 1400,
+    year: 2021
+  },
+  {
+    studentId: 2, // Unique for each student
+    studentName: "Lu Kang",
+    payedAmount: 1300,
+    year: 2023
+  },
+  {
+    studentId: 2, // Unique for each student
+    studentName: "Lu Kang",
+    payedAmount: 1200,
+    year: 2023
+  }
+ ];
+ 
+
+
+function averageOfAllPayments(payments){
+ function studentsPayedAmount(payments) {
+  return payments.reduce((acc, el) => acc + el.payedAmount, 0);
+}
+return studentsPayedAmount(payments)/payments.length
+
+}
+
+console.log(averageOfAllPayments(payments));
+
+ 
+ 
+ 
+ /*
+ let count = 0;
+ 
+ let filteredAmount = payments.map(function(person) {
+  return person.payedAmount
+ })
+ for (let i = 0; i < filteredAmount.length; i++) {
+  if (filteredAmount[i] !== undefined) {
+ 
+    count++
+  }
+ }
+ 
+ filteredAmount = filteredAmount.reduce((aggr, val) => {
+  return aggr + val
+ })
+ const averageCount = filteredAmount / count
+ 
+ 
+ console.log(averageCount) */
+
+
+
+/*  5. * Calculate the total sum of payment amounts made by each
+ student. We need to return an array that contains a list of
+ information about students, including the total paid amount by the
+ student.
+ Հաշվել յուրաքանչյուր ուսանողի կողմից վճարված ամբողջ գումարը։
+ Անհրաժեշտ է վերադարձնել ուսանողների ցուցակը (array), որը
+ ընդգրկում է ուսանողների տվյալները, նեռարյալ ուսանողի կողմից
+ ամբողջ վճարված գումարը */
+
+
+
+/* const payments = [
+ {
+ studentId: 1, // Unique identifier for each student
+ studentName: "John Doe", // Name of the student
+ payedAmount: 1600, // Amount payed with this transaction
+ year: 2020, // The payment year
+ },
+ {
+ studentId: 1, // Unique for each student
+ studentName: "John Doe",
+ payedAmount: 1500,
+ year: 2021
+ },
+ {
+ studentId: 1, // Unique for each student
+ studentName: "John Doe",
+ payedAmount: 1400,
+ year: 2022
+ },
+ {
+ studentId: 1, // Unique for each student
+ studentName: "John Doe",
+ payedAmount: 1300,
+ year: 2023
+ },
+ {
+ studentId: 2, // Unique for each student
+ studentName: "Lu Kang",
+ payedAmount: 1500,
+ year: 2020
+ },
+ {
+ studentId: 2, // Unique for each student
+ studentName: "Lu Kang",
+ payedAmount: 1400,
+ year: 2021
+ },
+ {
+ studentId: 2, // Unique for each student
+ studentName: "Lu Kang",
+ payedAmount: 1300,
+ year: 2023
+ },
+ {
+ studentId: 2, // Unique for each student
+ studentName: "Lu Kang",
+ payedAmount: 1200,
+ year: 2023
+ }
+ ];
+
+
+
+let sumpayedAmount = payments.reduce((a, c) => {
+  let filtered = a.filter(el => el.studentId === c.studentId);
+ 
+if(filtered.length > 0){
+console.log(a[a.indexOf(filtered[0])].payedAmount)
+    a[a.indexOf(filtered[0])].payedAmount += c.payedAmount;
+  }else{
+    a.push(c);
+  }
+  return a;
+},[]);
+
+console.log(sumpayedAmount);
+alert(JSON.stringify(sumpayedAmount))
+  */
