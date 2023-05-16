@@ -1,0 +1,172 @@
+/*1. Create a function that takes two strings as arguments and returns the number of times the first string (the single character) is found in the second string.
+charCount("a", "edabit") ➞ 1
+charCount("c", "chamber of secrets") ➞ 2
+charCount("b", "big fat bubble") ➞ 4*/
+
+
+function charCount(char,str){
+let count=0;
+for (let i=0;i<str.length;i++){
+if(str[i]===char){
+count++;
+}
+}
+return count;
+}
+console.log(charCount("b", "big fat bubble"))
+
+
+/*
+2. Create a function that takes a number as an argument and returns the highest digit in that number.
+highestDigit(379) ➞ 9
+highestDigit(2) ➞ 2
+highestDigit(377401) ➞ 7 */
+
+
+function highestDigit(num){
+let max=0;
+let str=num+""
+let str1=str.split("")
+for(let i=0;i<str1.length;i++){
+if(str1[i]>max){
+max=str1[i]
+}
+}
+return +max
+}
+console.log(highestDigit(377401))
+
+/*
+3. Create a function that takes length and width and finds the perimeter of a rectangle.
+findPerimeter(6, 7) ➞ 26
+findPerimeter(20, 10) ➞ 60
+findPerimeter(2, 9) ➞ 22*/
+
+
+
+function findPerimeter(len,wid){
+let perimeterOfRect=len*2+wid*2;
+return perimeterOfRect
+}
+
+
+console.log(findPerimeter(20,10))
+
+
+/*
+
+
+4. Create a function which returns the length of a string, WITHOUT using String.length property.
+length("Hello World") ➞ 11
+length("wash your hands!") ➞ 16*/
+
+
+
+function strLength(str) {
+  let length = 0;
+  while (str[length] !== undefined)
+    length++;
+  return length;
+}
+console.log(strLength("wash your hands!"))
+
+
+
+/*
+5. Create a function that takes a boolean variable flag and returns it as a string.
+boolToString(true) ➞ "true"
+boolToString(false) ➞ "false"
+*/
+
+
+
+function boolToString(bool){
+bool=bool+"";
+return bool
+}
+
+console.log(boolToString(true))
+
+/*
+6. Create a function that takes a number as its only argument and returns true if it's less than or equal to zero, otherwise return false.
+lessThanOrEqualToZero(5) ➞ false
+lessThanOrEqualToZero(0) ➞ true*/
+
+
+/* function lessThanOrEqualToZero(num){
+if(num<=0){
+return true;
+}else{ 
+return false
+}
+}
+
+console.log(lessThanOrEqualToZero(5))
+ */
+ 
+ 
+ function lessThanOrEqualToZero(num){
+ return (num<=0 ? true : false)
+ }
+ console.log(lessThanOrEqualToZero(5)) 
+ 
+ 
+
+
+/*
+7. Create a function that takes in a word and determines whether or not it is plural. A plural word is one that ends in "s".
+isPlural("changes") ➞ true
+isPlural("change") ➞ false
+isPlural("dudes") ➞ true
+isPlural("magic") ➞ false*/
+
+
+
+/* function isPlural(str){
+if(str.charAt(str.length-1)==='s'){
+return true
+}else{
+return false
+}
+
+}
+console.log(isPlural("dudes")) */
+
+
+function isPlural(str){
+return (str.charAt(str.length-1)==='s'? true : false)
+
+}
+console.log(isPlural("dudes")) 
+
+
+/*
+8.*(optional). Create a function to return the amount of potatoes there are in a string.
+potatoes("potato") ➞ 1
+potatoes("potatopotato") ➞ 2
+*/
+
+function countFreq(str) {
+
+  let text = "potato"
+  let count = 0;
+
+  for (let i = 0; i <= text.length; i++) {
+    let j;
+    for (j = 0; j < text.length; j++) {
+
+      if (str[i + j] != text[j]) {
+        break;
+      }
+
+    }
+    if (j === text.length) {
+      count++
+
+    }
+
+  }
+  return count;
+}
+console.log(countFreq("potatopotatopotato"));
+
