@@ -1,0 +1,83 @@
+What is the output?
+
+  /*      console.log(5)
+         
+         
+         function fn1() {
+           console.log("fn1");
+           fn2();
+         }
+         const myPromise = new Promise((resolve, reject) => {
+         console.log(100)
+        
+          setTimeout(() => {
+           console.log(90)
+        
+            resolve("foo");
+          });
+           console.log(5)
+        
+        });
+         function fn2() {
+           console.log("fn2");
+         }
+                   fn1();
+        
+         
+         setTimeout(function fn3() {
+           console.log("Time Out");
+           const prom3 = new Promise((res, rej) => {
+             if (true) {
+               res(12);
+             } else {
+               rej(10);
+             }
+           });
+         
+        
+           prom3.then(() => {
+         
+             console.log("prom3-then");
+         
+           });
+            function fn() {
+             console.log("arrow");
+           }
+           fn();
+         },0);
+                 
+         
+         setTimeout(function fn32() {
+           console.log("Time Out2");
+         }, 0);
+         
+         function fn4() {
+           console.log("fn4");
+         }
+         
+         fn4();
+         
+         const prom = new Promise((res, rej) => {
+           res(12);
+         });
+         
+         prom.then((r) => console.log("prom"));
+         
+         const prom1 = new Promise((res, rej) => {
+           res(12);
+         });
+         
+         prom1.then((r) => console.log("prom1"));
+         
+         const prom2 = new Promise((res, rej) => {
+           res(12);
+         });
+         
+         prom2.then((r) => console.log("prom2"));
+         
+         console.log(0)
+         
+          */
+         
+         //fn1,fn2,fn4,prom,prom1,prom2,timeout,arrow,prom3then,timeout2
+          
