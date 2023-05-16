@@ -1,0 +1,390 @@
+//TASK1
+
+//1 SOLUTION 
+
+/* function myInterval(cb, intervalDuration) {
+  setTimeout(() => {
+    cb();
+    myInterval(cb, intervalDuration);
+  }, intervalDuration);
+}
+ */
+// myInterval(() => console.log("hello world"), 1500);
+
+
+//2
+/* 
+function myInterval(callback, duration) {
+  let timerId; 
+  function interval() {
+    callback();
+     setTimeout(interval, duration);
+
+  }
+
+  setTimeout(interval, duration);
+
+  return  function stopInterval() {
+    clearTimeout(timerId);   
+    };
+}
+
+function callback1() {
+  console.log('Callback executed!');
+}
+
+const stopInterval = myInterval(callback1, 3000);
+stopInterval() */
+
+
+//TASK2
+//1 SOLUTION
+
+
+/* function returnPromise(param) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      typeof param === "string" ? res(param.toUpperCase()) : rej(param);
+    }, 500);
+  });
+} */
+// returnPromise("hello").then(console.log).catch(console.log);
+
+//2
+/* 
+const myFunc = (param) => {
+  return new Promise((res, rej) => {
+setTimeout(() => {
+  if (typeof param === "string") {
+    res(param.toUpperCase())
+  } else {
+   rej(param)
+    }
+  
+}, 500);  
+});
+};
+
+
+myFunc("hello")
+.then((res)=>{
+console.log(res)
+})
+.catch((error)=>{
+console.log(error)
+
+})
+
+ */
+
+//TASK3
+//1 SOLUTION
+
+// 3
+
+/* function mapPromise(newPromise, transPromise) {
+  return newPromise.then(transPromise).catch((err) => err);
+}
+const myPromise = new Promise((resolve, reject) => resolve(2));
+const timesTwo = (val) => val * 2;
+mapPromise(myPromise, timesTwo)
+  .then((result) => console.log(result))
+  .catch(console.log);
+ */
+ 
+ //2
+/*  function mapPromise(promise, transformer) {
+  return promise.then((result) => {
+    try {
+      return Promise.resolve(transformer(result));
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }).catch((error) => {
+    return Promise.reject(error);
+  });
+ }
+ 
+ const myPromise = new Promise((resolve, reject) => { reject("error") })
+ const timesTwo = (val) => val * 2
+ mapPromise(myPromise, timesTwo).then(result => console.log(result))
+ .catch(error=>console.log(error))  */
+
+
+//TASK4
+
+/* Write a recursive function to determine whether all digits of the number are odd or not. */
+/* 
+ function digitsOdd(number) {
+  if (number < 10) {
+    return number % 2 !== 0;
+  
+}
+return (number % 10) % 2 !== 0 && digitsOdd(Math.floor(number / 10));
+}
+
+console.log(digitsOdd(4211133))  */
+
+//TASK5
+
+/* Given an array of numbers. Write a recursive function to find its minimal positive 
+element. (if such element does not exist, return -1).  */
+
+
+/* 
+function findMinimalPositive(arr) {
+  if (arr.length === 0) {
+    return -1;
+  }
+
+  if (arr[0] > 0) {
+
+    const minimalPositiveElement = findMinimalPositive(arr.slice(1));
+    if (minimalPositiveElement <0 || arr[0] < minimalPositiveElement) {
+      return arr[0];
+    }
+  }
+
+  return findMinimalPositive(arr.slice(1));
+}
+
+console.log(findMinimalPositive([-1,-2,6,-7,2]))  */
+
+
+//TASK6
+
+/* Given an array of numbers which is almost sorted in ascending order.  Find the index 
+where sorting order is violated */
+
+ /* function findSortingViolationIndex(arr) {
+ 
+  let left = 0;
+  let right = arr.length-1
+  
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+ 
+  
+    if (arr[mid] > arr[mid + 1]) {
+      return mid;
+    }
+ 
+  
+    if (arr[mid - 1] > arr[mid]) {
+      return mid-1;
+    }
+ 
+  
+    if (arr[mid] > arr[left]) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+    }
+ 
+  return -1;
+ }
+ console.log(findSortingViolationIndex([9,4,5,6,9]))
+ 
+  */
+
+
+
+//TASK7
+
+/* Given an array. Write a recursive function that removes the first element and returns the 
+given array. (without using ​arr.shift()​)  */
+
+
+
+/*  function removeFirstElement(arr) {
+  
+  if (arr.length <= 1) {
+    return [];
+  }
+ 
+  return [arr[1]].concat(removeFirstElement(arr.slice(1)));
+ }
+ 
+ console.log(removeFirstElement([6,8,9])) */ 
+
+//2
+
+/* 
+function removeFirst(arr){
+if(arr.length===0){
+return -1
+}
+return arr.slice(1)
+}
+
+
+console.log(removeFirst([5,4,3])) */
+
+//TASK8
+
+/* Given an array of nested arrays. Write a recursive function that flattens it. (Hint create 
+function that concats arrays). */
+
+/*  function flattenArray(arr) {
+  let flattenedArray = [];
+ 
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      flattenedArray = flattenedArray.concat(flattenArray(arr[i]));
+    } else {
+      flattenedArray.push(arr[i]);
+    }
+  }
+ 
+  return flattenedArray;
+ }  */
+
+//2
+/* function flattenArray(arr) {
+  let result = [];
+    function flattened(arr) {
+    arr.forEach(item => {
+      if (Array.isArray(item)) {
+        flattened(item);
+      } else {
+        result.push(item); 
+      }
+    });
+  }
+  
+  flattened(arr);
+  
+  return result;
+}
+
+console.log(flattenArray([4,5,[5,1],[4,[2]]]))
+
+
+ */
+
+
+//TASK9
+
+/* Given an array and a number N. ​ ​Write a recursive function that rotates an array N 
+places to the left. (​Hint​: to add element to the beginning use ​arr.unshift()​) */
+
+/*
+ function rotateArray(arr, N) {
+  if (N === 0) {
+    return arr;
+  }
+  let newIndex = N % arr.length;
+
+  arr.unshift(arr.pop());
+
+  return rotateArray(arr, N - 1);
+}
+
+console.log(rotateArray([7,8,9,20],2)) */
+
+
+//TASK10
+
+/* Given a number. Write a function that calculates its sum of the digits and if that sum has 
+more than 1 digit find the sum of digits of that number. Repeat that process if needed 
+and return the result.  */
+/*
+ function sumOfDigits(num) {
+  let sum = 0;
+    const numStr = num.toString();
+  
+  for (let i = 0; i < numStr.length; i++) {
+    sum += +(numStr[i]);
+  }
+  
+   if (sum >= 10) {
+    return sumOfDigits(sum);
+  }
+    return sum;
+}
+
+console.log(sumOfDigits(99999)) */ 
+
+//TASK11
+
+//Implement merge sort
+
+/* function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  const middle = Math.floor(arr.length / 2);
+  const left = arr.slice(0, middle);
+  const right = arr.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+  const result = [];
+
+  let i = 0;
+  let j = 0;
+
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
+    }
+  }
+
+  while (i < left.length) {
+    result.push(left[i]);
+    i++;
+  }
+
+  while (j < right.length) {
+    result.push(right[j]);
+    j++;
+  }
+
+  return result;
+}
+
+// Example usage:
+const arr = [64, 34, 25, 12, 22, 11, 90];
+const sortedArr = mergeSort(arr);
+console.log(sortedArr); // Output: [11, 12, 22, 25, 3,90] */
+
+
+//function binarySearch(sortedArray, value) {
+//   let start = 0;
+//   let end = sortedArray.length - 1;
+
+//   while (start <= end) {
+//     let middle = Math.floor((start + end) / 2);
+//     if (sortedArray[middle] === value) {
+//       return middle;
+//     } else if (sortedArray[middle] < value) {
+//       start = middle + 1;
+//     } else {
+//       end = middle - 1;
+//     }
+//   }
+//   return -1;
+// }
+
+// const element = binarySearch([4, 15, 18, 23, 27], 23);
+// //23
+// console.log(element);
+
+// [2, 3, 1, 9, 4];
+
+
+//Find the Missing Number using binary search
+// example usage
+
+
+
+
+
