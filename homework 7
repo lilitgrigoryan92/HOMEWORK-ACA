@@ -1,0 +1,357 @@
+/* 
+//TASK1
+
+
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+  compareAge(obj) {
+    if (obj.age < this.age) {
+      return this.name + " is older than me"
+    } else if (obj.age === this.age) {
+      return this.name + "is the same age as me"
+    }
+
+    return this.name + " is younger than me"
+  }
+}
+
+const p1 = new Person("Samuel", 24)
+const p2 = new Person("Joel", 36)
+const p3 = new Person("Lily", 24)
+console.log(p1.compareAge(p2))
+ */
+
+
+//SOLUTION2
+/*  class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+ 
+  compareAge(person) {
+    if (person.age > this.age) {
+      return `${person.name} is older then me`;
+    } else if (person.age === this.age) {
+      return `${person.name} is the same age as me`;
+    } else {
+      return `${person.name} is younger then me`;
+    }
+  }
+ }
+ 
+ const p1 = new Person("John", 20);
+ const p2 = new Person("Alen", 15);
+ const p3 = new Person("Maria", 15);
+ 
+ console.log(p1.compareAge(p2)); */
+ /* 
+ 
+ //TASK2
+ 
+ class University {
+    teachers = [];
+    students = [];
+  
+  addMember(member) {
+    if (member instanceof Teacher) {
+      this.teachers.push(member);
+    } else {
+      this.students.push(member);
+    }
+  }
+  removeMember(member) {
+    if (member instanceof Teacher) {
+      this.teachers = this.teachers.filter(function(teach) {
+        return teach !== member
+      })
+    } else {
+      this.students = this.students.filter(function(stud) {
+        return stud !== member
+   
+      })
+    }
+  }
+   
+  startLesson() {
+    this.students = this.students.filter(function(input) {
+      return (input.energy = input.energy - 2)
+    })
+   
+    this.teachers = this.teachers.filter(function(input) {
+      return (input.energy = input.energy - 5)
+    })
+   
+  }
+   
+   }
+   
+  class UniversityMember {
+    constructor(name, age, role, energy = 24) {
+      this.name = name;
+      this.age = age;
+      this.role = role;
+      this.energy = 24
+    }
+    info() {
+      return this;
+    }
+  }
+   
+  class Student extends UniversityMember {
+    constructor(name, age, role, energy) {
+      super(name, age, role, energy);
+    }
+  }
+   
+  class Teacher extends UniversityMember {
+    constructor(name, age, role, energy) {
+      super(name, age, role, energy);
+    }
+   
+  }
+  const newTeach = new Teacher("Betty", 30, "teacher", 20);
+  const newStud = new Student("Lily", 25, "student", 19);
+  const university1 = new University();
+  university1.addMember(newTeach);
+  university1.addMember(newStud);
+  console.log(university1.teachers);
+  console.log(university1.students);
+  university1.startLesson();
+   */
+ 
+  
+//SOLUTION2
+
+
+
+/* 
+
+//TASK3
+
+class CoffeeShop {
+  constructor(name, menu) {
+    this.name = name;
+    this.menu = menu;
+    this.orders = [];
+  }
+
+  addOrder(itemName) {
+    const item = this.menu.find((item) => item.name === itemName);
+    if (item) {
+      this.orders.push(itemName);
+    } else {
+      return "This item is currently unavailable";
+    }
+  }
+
+  fulfillOrder() {
+    if (this.orders.length > 0) {
+      this.orders.shift();
+      return "The item is ready";
+    } else {
+      return "All orders have been fulfilled";
+    }
+  }
+
+  listOrders() {
+    return this.orders;
+  }
+
+  dueAmount() {
+    let total = 0;
+    this.orders.forEach((item) => {
+      const menuItem = this.menu.find((menuitem) => menuitem.name === item);
+      total += menuItem.price;
+    });
+    return total;
+  }
+
+  cheapestItem() {
+    let cheapest = this.menu[0];
+    this.menu.forEach((item) => {
+      if (item.price < cheapest.price) {
+        cheapest = item;
+      }
+    });
+    return cheapest.name;
+  }
+
+  drinksOnly() {
+    const drinks = this.menu.filter((item) => item.type === "drink");
+    return drinks.map((item) => item.name);
+  }
+
+  foodOnly() {
+    const food = this.menu.filter((item) => item.type === "food");
+    return food.map((item) => item.name);
+  }
+} 
+
+const menu = [
+  { name: "hot chocolate", type: "drink", price: 3.50 },
+  { name: "croissant", type: "food", price: 2.00 },
+  { name: "iced tea", type: "drink", price: 2.50 },
+  { name: "bread", type: "food", price: 1.50 },
+];
+
+const myCoffeeShop = new CoffeeShop("My Coffee Shop", menu);
+
+myCoffeeShop.addOrder("hot chocolate");
+ myCoffeeShop.addOrder("croissant");
+myCoffeeShop.addOrder("bread");
+
+console.log(myCoffeeShop.fulfillOrder()); // "The item is ready"
+console.log(myCoffeeShop.fulfillOrder()); // "The item is ready"
+console.log(myCoffeeShop.fulfillOrder()); // "The item is ready"
+console.log(myCoffeeShop.fulfillOrder()); // "All orders have been fulfilled" 
+
+console.log(myCoffeeShop.listOrders()); // []
+console.log(myCoffeeShop.dueAmount()); // 0
+console.log(myCoffeeShop.cheapestItem()); // "bread"
+console.log(myCoffeeShop.drinksOnly()); // ["hot chocolate", "iced tea"]
+console.log(myCoffeeShop.foodOnly()); // ["croissant", "bread"]
+
+
+  */
+  
+  
+  //////
+ 
+
+
+
+
+class CoffeeShop {
+  constructor(name, menu) {
+    this.name = name;
+    this.menu = menu;
+    this.order = [];
+  }
+  addOder(order) {
+    const isExist = this.menu.find((item) => item.name === order);
+    if (isExist) {
+      this.order.push(order);
+      return `Order Added!`;
+    }
+
+    return `This item is currently unavailable`;
+  }
+  fulfillOrder() {
+    return this.order.length
+      ? `the ${this.order.shift()} is ready`
+      : `All orders have been fulfilled`;
+  }
+  listOrders() {
+    return this.order;
+  }
+  onlyDrinks() {
+    return this.menu.filter((item) => item.type === "drink");
+  }
+  onlyFoods() {
+    return this.menu.filter((item) => item.type === "food");
+  }
+  cheapestItem1() {
+    let cheapestItem = this.menu[0];
+    for (const obj of this.menu) {
+      if (cheapestItem.price > obj.price) {
+        cheapestItem = obj;
+      }
+    }
+    return cheapestItem.name;
+  }
+
+  cheapestItem2() {
+    let cheapest = this.menu[0];
+    this.menu.forEach((item) => {
+      if (item.price < cheapest.price) {
+        cheapest = item;
+      }
+    });
+    return cheapest.name;
+  }
+
+  cheapestItem3() {
+    let compare = this.menu[0].price;
+    let nameOfProduct = this.menu[0].name;
+    for (let obj of this.menu) {
+      if (compare > obj.price) {
+        compare = obj.price;
+        nameOfProduct = obj.name;
+      }
+    }
+    return nameOfProduct;
+  }
+  cheapestItem4() {
+    return this.menu.reduce((prev, current) => {
+      if (current.price < prev.price) {
+        return current;
+      }
+      return prev;
+    }).name;
+  }
+
+  dueAmount1() {
+    const dueAmount = this.order.reduce((sum, item) => {
+      const foundMenuItem = this.menu.find((obj) => obj.name === item);
+      return sum + foundMenuItem.price;
+    }, 0);
+    return dueAmount.toFixed(1);
+  }
+
+  dueAmount2() {
+    let sum = 0;
+    for (let name of this.order) {
+      for (let obj of this.menu) {
+        if (name === obj.name) {
+          sum += obj.price;
+        }
+      }
+    }
+    return sum.toFixed(1);
+  }
+
+  dueAmount3() {
+    let total = 0;
+    this.order.forEach((item) => {
+      const menuItem = this.menu.find((menuitem) => menuitem.name === item);
+      total += menuItem.price;
+    });
+    return total.toFixed(1);
+  }
+}
+
+const myMenu = [
+  { name: "Coffee", type: "drink", price: 250 },
+  { name: "Lemonade", type: "drink", price: 400 },
+  { name: "Wrap", type: "food", price: 1200 },
+  { name: "Sandwich", type: "food", price: 1000 },
+  { name: "BloodyMary", type: "drink", price: 1500 },
+  { name: "Spaghetti", type: "food", price: 800 },
+];
+
+const coffeeHouse = new CoffeeShop("coffeeHouse", myMenu);
+console.log(coffeeHouse.addOder("BloodyMary"));
+console.log(coffeeHouse.addOder("Wrap"));
+console.log(coffeeHouse.addOder("Sandwich"));
+console.log(coffeeHouse.addOder("Lemonade"));
+// console.log(coffeeHouse.order);
+console.log(coffeeHouse.fulfillOrder());
+// console.log(coffeeHouse.listOrders());
+// console.log("drinks", coffeeHouse.onlyDrinks());
+// console.log("foods", coffeeHouse.onlyFoods());
+
+console.log(coffeeHouse.dueAmount1());
+// console.log(coffeeHouse.dueAmount2());
+console.log(coffeeHouse.dueAmount3());
+console.log(coffeeHouse.dueAmount4());
+console.log(1, coffeeHouse.order);
+console.log(2, coffeeHouse.fillOrder2());
+console.log(3, coffeeHouse.order);
+console.log(4, coffeeHouse.fillOrder2());
+console.log(5, coffeeHouse.order);
+  
+  
