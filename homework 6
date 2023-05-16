@@ -1,0 +1,229 @@
+/* 1) գրեք Book constructor, որի էկզեմպլյառները կունենան author և title property-ներ, ու getTitle ու getAuthor մեթոդները,
+// որոնք կվերադարձնեն author և title property-ները այս տեսքով ՝ 'Title: ....', 'Author: ...': Օրինակ՝
+//
+// Harry Potter գիրքը ստեղծենք HP անունով
+//
+HP.title => "Harry Potter"
+HP.author => "J.K. Rowling"
+HP.getTitle() => "Title: Harry Potter"
+HP.getAuthor() => "Author: J.K. Rowling" */
+
+
+//1
+/* 
+function Book(title, author) {
+  this.title = title;
+  this.author = author;
+}
+Book.prototype.getAuthor = function () {
+  return this.author;
+};
+Book.prototype.getTitle = function () {
+  return this.title;
+};
+
+const book1 = new Book("Harry Potter", "J.K. Rowling");
+console.log(book1.getAuthor());
+
+class Book1 {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+  getTitle() {
+    return this.title;
+  }
+  getAuthor() {
+    return this.author;
+  }
+}
+
+const b1 = new Book1("Harry Potter", "J.K. Rowling");
+console.log(b1.getAuthor()); */
+
+//2
+/* function Book(title,author){
+this.title=title
+this.author=author
+this.getTitle=function(title){
+return `Title:${this.title}`
+}
+this.getAuthor=function(author){
+return `Author:${this.author}`
+}
+}
+
+const HP=new Book("Harry Potter","J.K. Rowling")
+console.log(HP.title)
+console.log(HP.author)
+console.log(HP.getTitle())
+console.log(HP.getAuthor())
+ */
+ 
+/*  
+ 2) գրեք Calculator constructor, որը կունենա add, subtract, multiply ու divide մեթոդները։ Օրինակ՝ */
+ 
+ 
+//1
+
+/*  function Calculator() {}
+ 
+ Calculator.prototype.add = function (num1, num2) {
+  return num1 + num2;
+ };
+ 
+ Calculator.prototype.multiply = function (num1, num2) {
+  return num1 * num2;
+ };
+ const c1 = new Calculator();
+ console.log(c1.add(2, 5));
+ 
+ class Calculator1 {
+  add(num1, num2) {
+    return num1 + num2;
+  }
+  multiply(num1, num2) {
+    return num1 * num2;
+  }
+ }
+ 
+ Calculator1.prototype.divide = (num1, num2) => {
+  return num1 / num2;
+ };
+ console.log(c2.divide(25, 2));
+ 
+ const c2 = new Calculator1();
+ console.log(c2.multiply(2, 5)); */
+
+
+ //2
+/* function Calculator() {
+  this.add=function(a,b){
+return a+b
+}
+ this.subtract=function(a,b){
+return a-b
+}
+ this.multiply=function(a,b){
+return a*b
+}
+ this.divide=function(a,b){
+return a/b
+}
+}
+const calculator = new Calculator()
+
+console.log(calculator.add(10, 5)) //=> 15
+console.log(calculator.subtract(10, 5)) //=> 5
+console.log(calculator.multiply(10, 5)) //=> 50
+console.log(calculator.divide(10, 5)) //=> 2 */
+
+
+
+/* 
+3. Create a constructor named User and create a way to check the number of users (number of
+instances) that were created, so that the value can be accessed as a class attribute.
+Example:
+u1 = new User("johnsmith10")
+User.userCount ➞ 1
+u2 = new User("marysue1989")
+User.userCount ➞ 2
+u3 = new User("milan_rodrick")
+User.userCount ➞ 3 */
+
+/* function User(username) {
+  this.username = username
+  User.userCount++;
+}
+  User.userCount = 0;
+
+
+
+const u1 = new User("johnsmith10");
+console.log(User.userCount)
+
+const u2 = new User("marysue1989")
+console.log(User.userCount)
+
+const u3 = new User("milan_rodrick")
+console.log(User.userCount)
+
+ */
+ 
+//4) Ինչ կտպվի ծրագրի աշխատանքից հետո, բացատրեք ինչու
+
+/* 
+const obj = {
+   age: 24,
+   foo: function () {
+       let self = this;
+       ((num) => {
+           this.age = num
+       })(17);
+       console.log(this.age);
+   }
+}
+obj.foo() */
+ 
+//Կտպի 17,քանի որ սկզբից կանչել ենք obj.foo() ֆունկցիան օբյեկտի վրայից ,որն իր մեջ ունի arrow ֆունկցիա,որը ստանում է ծնողի this-ը ,որը obj օբյեկտն է,ու քանի որ ընդունում է num որպես արժեք ու միանգամից հայտարարվում և կանչվում է 17 արժեքով ,ու   this.age = num ,իսկ այդ this-ը իր ծնողի this-ն է,հետևաբար մտնում է  այդ օբյետի age արժեքը փոխում և տպում է 17
+
+
+ //5) Ինչ կտպվի ծրագրի աշխատանքից հետո, բացատրեք ինչու
+ 
+/* const obj = {
+   a: 777,
+   foo
+}
+
+foo()//սա կտպի undefined,քանի որ ֆունկցիան սովորական կանչված է ,իսկ այդ դեպքում իր this-ը դառնում է ,window օբյեկտը,որի վրա չկա a փոփոխական,հետևաբար տպում է undefined
+function foo() {
+   console.log(this.a)
+}
+obj.foo() //սա կտպի 777,քանի որ ֆունկցիան կանչված է օբյեկտի վրայից,և ֆունկցիայի this-ը կլինի այդ օբյեկտը,որտեղից էլ կվերցնի a-ի արժեքը և կտպի 777 */
+
+//6) Ինչ կտպվի ծրագրի աշխատանքից հետո, բացատրեք ինչու
+
+/* const obj = {
+   age: 22,
+   showAge() {
+       console.log(this.age)//կտպի 22,քանի որ showAge() ֆունկցիան կանչվել է օբյեկտի վրայից ու կվերցնի օբյեկտի արժեքը
+       const arrowAge = () => {
+           console.log(this.age)//կտպի 22,քանի որ arrow ֆունկցիա է,չունի սեփական this,ու կվերցնի ծնողի this-ը ,որը արդեն հղված է օբյեկտին
+       }
+       arrowAge()
+   },
+   showArrowAge: () => {
+       console.log(this.age)//կտպի undefined,քանի որ arrow ֆունկցիա է,որը չունի սեփական this ու մեր օրինակում չունի ծնող ֆունկցիա,կգնա կվերցնի window օբյեկտից,որի վրա չունենք հայտարարված age,ու կտա undefined,նաև կապ չունի ,թե իրեն ոնց ենք կանչել ,օրինակ մեր դեպքում օբյեկտի վրայից ,բայց մեկ է undefined կտպի
+       
+   }
+}
+obj.showAge()
+obj.showArrowAge() */
+
+
+
+
+//7) Ինչ կտպվի ծրագրի աշխատանքից հետո, բացատրեք ինչու
+/* 
+const foo = function () {
+   this.x = 5;
+   (function () {
+       this.x = 3;
+   })();
+   console.log(this.x);
+};
+const obj = {
+   x: 4,
+   logger: function () {
+   This = {}
+
+
+       console.log(this.x);
+   }
+};
+foo();//կտպի 3,քանիոր ֆունկցիան սովորական կանչված է ,հետևաբար իր this-ը կլինի window օբյեկտը ,որի վրա սկզբում x=5,հետո նեսթիդ ֆունկցիան էլի սովորական կանչելուց հետո փոխում դարձնում է 3
+
+new foo();// կտպի 5 ,քանի որ կանչված է new-ով,որի դեպքում ստեղծվել է օբյեկտ ,որի մեջ կա x = 5
+
+obj.logger();//կտպի 4,քանի որ logger-ը ,որի արժեքը ֆունկցիա է ,կանչված է օբյեկտի վրայից,ֆունկցիան կհղվի տվյալ օբյեկտին և կտպի օբյեկտի մեջի x-ի արժեքը՝ 4
+new obj.logger(); //undefined կտպի,քանի որ new-ով է կանչված,որի դեպքում ստեղծվել է նոր դատարկ օբյեկտ ,որի վրա չկա x property,հետևաբար տպում է undefined */
